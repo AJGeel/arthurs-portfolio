@@ -31,7 +31,7 @@ const Header = () => {
         href="/"
         className={cn(
           youngSerif.className,
-          "text-xl rounded-full px-2 py-1 -mx-2 hover:text-yellow-700 duration-150"
+          "text-xl rounded-full px-2 py-1 -mx-2 active:scale-90 active:opacity-80 duration-150"
         )}
       >
         Arthur Geel
@@ -41,17 +41,19 @@ const Header = () => {
           <Link
             key={item.label}
             className={cn(
-              "px-4 py-2 rounded-full",
-              pathname === item.href && "bg-white shadow"
+              "px-4 py-2 rounded-full group",
+              pathname === item.href && "bg-white shadow duration-150"
             )}
             href={item.href}
           >
-            {item.label}
+            <span className="block duration-150 group-active:scale-90 group-active:opacity-80">
+              {item.label}
+            </span>
           </Link>
         ))}
       </div>
       <Link
-        className="group -mx-2 hidden w-32 items-center justify-end gap-2 overflow-hidden rounded-full px-2 py-1.5 md:flex"
+        className="group -mx-2 hidden w-32 items-center justify-end gap-2 overflow-hidden rounded-full px-2 py-1.5 duration-150 active:scale-90 active:opacity-80 md:flex"
         href="/"
       >
         <span>Contact</span>

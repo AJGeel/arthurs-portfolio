@@ -2,36 +2,16 @@ import { ArrowTrendingUpIcon, HandRaisedIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
 import Link from "next/link";
 
-import { youngSerif } from "@/app/layout";
-import Paragraph from "@/components/Paragraph";
 import { cn } from "@/utils/cn";
 
-const baseBentoClasses =
-  "p-8 rounded-3xl bg-white shadow-sm active:scale-95 active:opacity-80 duration-150 min-h-[256px] flex flex-col";
-const basePillClasses =
-  "flex items-center gap-2 px-3 py-2 rounded-full outline outline-2 outline-black/5 bg-white";
-const ringHoverClasses =
-  "group-hover:ring ring-blue-500 ring-offset-2 duration-150";
+import { BlogBentoProps, IconBentoProps, ImageBentoProps } from "./types";
+import Me from "../Me";
+import { H3, Paragraph } from "../Typography";
 
-type BlogBentoItem = {
-  title: string;
-  description: string;
-  date: string;
-  href: string;
-};
-
-type IconBentoItem = {
-  imageUrl: string;
-  label: string;
-  bgColor: string;
-  href: string;
-};
-
-type ImageBentoItem = {
-  imageUrl: string;
-  label: string;
-  href: string;
-  className?: string;
+const classes = {
+  base: "p-8 rounded-3xl bg-white shadow-sm active:scale-95 active:opacity-80 duration-150 min-h-[256px] flex flex-col",
+  pill: "flex items-center gap-2 px-3 py-2 rounded-full outline outline-2 outline-black/5 bg-white",
+  ringHover: "group-hover:ring ring-blue-500 ring-offset-2 duration-150",
 };
 
 export const BlogBentoItem = ({
@@ -39,12 +19,12 @@ export const BlogBentoItem = ({
   description,
   date,
   href,
-}: BlogBentoItem) => (
-  <Link href={href} className={cn(baseBentoClasses, "lg:col-span-2 group")}>
-    <h1 className={cn(youngSerif.className, "text-lg")}>{title}</h1>
+}: Omit<BlogBentoProps, "type">) => (
+  <Link href={href} className={cn(classes.base, "lg:col-span-2 group")}>
+    <H3>{title}</H3>
     <Paragraph className="mt-3">{description}</Paragraph>
     <div className="mt-auto flex items-center justify-between">
-      <div className={cn(basePillClasses, ringHoverClasses)}>
+      <div className={cn(classes.pill, classes.ringHover)}>
         <Paragraph>Read more</Paragraph>
         <ArrowTrendingUpIcon className="h-4 w-4" />
       </div>
@@ -58,11 +38,11 @@ export const IconBentoItem = ({
   label,
   bgColor,
   href,
-}: IconBentoItem) => (
+}: Omit<IconBentoProps, "type">) => (
   <Link
     href={href}
     className={cn(
-      baseBentoClasses,
+      classes.base,
       "relative flex items-center justify-center group"
     )}
     style={{ backgroundColor: bgColor }}
@@ -70,8 +50,8 @@ export const IconBentoItem = ({
     <Image src={imageUrl} width={80} height={80} alt={label} />
     <div
       className={cn(
-        basePillClasses,
-        ringHoverClasses,
+        classes.pill,
+        classes.ringHover,
         "absolute bottom-4 left-4 gap-0 overflow-hidden"
       )}
     >
@@ -86,20 +66,21 @@ export const IconBentoItem = ({
 export const ArthurBentoItem = () => (
   <div
     className={cn(
-      baseBentoClasses,
+      classes.base,
       "row-span-2 grow group cursor-pointer flex flex-col"
     )}
   >
-    <Paragraph>Hi there, I&apos;m Arthur!</Paragraph>
+    <Me />
+    <Paragraph className="mt-6">Hi there, I&apos;m Arthur!</Paragraph>
     <Paragraph className="mt-3">
       I&apos;m a designer/developer from Amersfoort, working at Enrise.
     </Paragraph>
     <Paragraph className="mt-3">
-      I like software, design, science fiction, music (especially DnB) and web3
-      stuff.
+      I&apos;m passionate about software, design, sci-fi, music (DnB) and
+      re-architecting the global financial infrastructure with friends.
     </Paragraph>
     <div className="mt-auto">
-      <div className={cn(basePillClasses, ringHoverClasses, "inline-flex")}>
+      <div className={cn(classes.pill, classes.ringHover, "inline-flex")}>
         <Paragraph>Say hi!</Paragraph>
         <HandRaisedIcon className="h-4 w-4" />
       </div>
@@ -112,24 +93,29 @@ export const ImageBentoItem = ({
   label,
   href,
   className,
-}: ImageBentoItem) => (
+}: Omit<ImageBentoProps, "type">) => (
   <Link
     href={href}
     className={cn(
-      baseBentoClasses,
+      classes.base,
       "relative flex items-center justify-center group overflow-hidden",
       className
     )}
   >
-    <Image src={imageUrl} fill={true} alt={label} />
+    <Image
+      src={imageUrl}
+      fill={true}
+      alt={label}
+      style={{ objectFit: "cover" }}
+    />
     <div
       className={cn(
-        basePillClasses,
-        ringHoverClasses,
+        classes.pill,
+        classes.ringHover,
         "absolute bottom-4 left-4 gap-0 overflow-hidden"
       )}
     >
-      <Paragraph className="-ml-24 w-[88px] text-center opacity-0 duration-300 group-hover:ml-0 group-hover:opacity-100">
+      <Paragraph className="-ml-28 w-[100px] text-center opacity-0 duration-300 group-hover:ml-0 group-hover:opacity-100">
         {label}
       </Paragraph>
       <ArrowTrendingUpIcon className="ml-2 h-4 w-4" />

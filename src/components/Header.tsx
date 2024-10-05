@@ -8,7 +8,13 @@ import { cn } from "@/utils/cn";
 
 import { youngSerif } from "./Typography";
 
-const headerItems = [
+type HeaderItem = {
+  href: string;
+  label: string;
+  isActive: boolean;
+};
+
+const headerItems: Omit<HeaderItem, "isActive">[] = [
   {
     href: "/",
     label: "Home",
@@ -17,13 +23,26 @@ const headerItems = [
     href: "/about",
     label: "About",
   },
-  /*
-   * {
-   *   href: "/posts",
-   *   label: "Posts",
-   * },
-   */
+  {
+    href: "/posts",
+    label: "Posts",
+  },
 ];
+
+const HeaderItem = ({ label, href, isActive }: HeaderItem) => (
+  <Link
+    key={label}
+    className={cn(
+      "px-4 py-2 rounded-full group",
+      isActive && "bg-white shadow duration-150"
+    )}
+    href={href}
+  >
+    <span className="block duration-150 group-hover:opacity-50 group-active:scale-90 group-active:opacity-80">
+      {label}
+    </span>
+  </Link>
+);
 
 const Header = () => {
   const pathname = usePathname();
@@ -40,19 +59,13 @@ const Header = () => {
         Arthur Geel
       </Link>
       <div className="flex items-center justify-center gap-1 rounded-full bg-yellow-700 p-1.5">
-        {headerItems.map((item) => (
-          <Link
-            key={item.label}
-            className={cn(
-              "px-4 py-2 rounded-full group",
-              pathname === item.href && "bg-white shadow duration-150"
-            )}
-            href={item.href}
-          >
-            <span className="block duration-150 group-active:scale-90 group-active:opacity-80">
-              {item.label}
-            </span>
-          </Link>
+        {headerItems.map(({ label, href }) => (
+          <HeaderItem
+            key={label}
+            label={label}
+            href={href}
+            isActive={pathname === href}
+          />
         ))}
       </div>
       <Link

@@ -1,11 +1,15 @@
 import { ReactNode } from "react";
 
-export type HeaderProps = {
+type BaseProps = {
   children: ReactNode;
   className?: string;
 };
 
-export type ParagraphProps = {
-  children: ReactNode;
-  className?: string;
+export type HeaderProps = BaseProps;
+
+export type ParagraphProps = BaseProps;
+
+export type LinkProps = BaseProps & {
+  href: string;
+  isExternal?: boolean;
 };

@@ -9,9 +9,9 @@ const HomePage = () => (
   <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
     <ArthurBentoItem />
     <BlogBentoItem
-      title="Pixel Pioneering: From Blank Canvas to Digital Masterpiece"
-      description="Join me on an artistic expedition, exploring the evolution of my visual creativity and the magic that unfolds when design meets imagination."
-      date="Feb 21, 2024"
+      title="A few words about this site"
+      description="I'm excited to ship this site! I like portfolios that are minimalist with personality. In this blog post I talk about the design and the tech stack that powers this site."
+      date="Oct 5, 2024"
       href="/"
     />
     <IconBentoItem
@@ -39,9 +39,9 @@ const HomePage = () => (
       href="/"
     />
     <BlogBentoItem
-      title="Design Diaries: Crafting Aesthetic Alchemy"
-      description="Explore the aesthetic evolution of my design journey, from humble beginnings to the fusion of creativity and structure in the pursuit of visual excellence."
-      date="Dec 16, 2023"
+      title="Brouwerij Geel: Recipes"
+      description="Ever get tired of just drinking beer? Here's a collection of easy and delicious recipes that incorporate various beer styles. "
+      date="Oct 5, 2024"
       href="/"
     />
     <IconBentoItem

@@ -23,3 +23,8 @@ export type ImageBentoProps = BaseProps & {
   label: string;
   className?: string;
 };
+
+export type ItemIconProps = {
+  isExternal?: boolean;
+  className?: string;
+};

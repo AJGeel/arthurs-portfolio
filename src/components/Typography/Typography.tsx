@@ -1,9 +1,11 @@
 import { Young_Serif } from "next/font/google";
 import LocalFont from "next/font/local";
+import Link from "next/link";
 
+import { externalLinkProps } from "@/utils";
 import { cn } from "@/utils/cn";
 
-import { HeaderProps, ParagraphProps } from "./types";
+import { HeaderProps, LinkProps, ParagraphProps } from "./types";
 
 export const youngSerif = Young_Serif({
   subsets: ["latin"],
@@ -44,4 +46,14 @@ export const H4 = ({ children, className }: HeaderProps) => (
 
 export const Paragraph = ({ children, className }: ParagraphProps) => (
   <p className={cn("text-black/80 leading-relaxed", className)}>{children}</p>
+);
+
+export const StyledLink = ({ children, href, isExternal }: LinkProps) => (
+  <Link
+    className="underline hover:text-black/50 hover:no-underline"
+    href={href}
+    {...externalLinkProps(isExternal)}
+  >
+    {children}
+  </Link>
 );

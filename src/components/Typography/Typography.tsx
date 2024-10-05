@@ -1,7 +1,24 @@
-import { youngSerif } from "@/app/layout";
+import { Young_Serif } from "next/font/google";
+import LocalFont from "next/font/local";
+
 import { cn } from "@/utils/cn";
 
 import { HeaderProps, ParagraphProps } from "./types";
+
+export const youngSerif = Young_Serif({
+  subsets: ["latin"],
+  weight: "400",
+});
+
+export const brockmann = LocalFont({
+  src: [
+    {
+      path: "../../../public/fonts/brockmann-medium/brockmann-medium.ttf",
+      weight: "400",
+    },
+  ],
+  variable: "--font-brockmann",
+});
 
 export const H1 = ({ children, className }: HeaderProps) => (
   <h1 className={cn(youngSerif.className, "text-4xl", className)}>

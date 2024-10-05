@@ -15,11 +15,10 @@ const HomePage = () => (
       href="/"
     />
     <IconBentoItem
-      imageUrl="/images/taakjes-logo.png"
-      label="Taakjes.app"
-      bgColor="#EFD3E4"
-      href="https://taakjes.vercel.app"
-      isExternal
+      imageUrl="/images/enrise-logo.png"
+      label="Enrise.com"
+      bgColor="#EFE4CA"
+      href="https://enrise.com"
     />
     <IconBentoItem
       imageUrl="/images/uptab-logo.png"
@@ -46,10 +45,11 @@ const HomePage = () => (
       href="/"
     />
     <IconBentoItem
-      imageUrl="/images/enrise-logo.png"
-      label="Enrise.com"
-      bgColor="#EFE4CA"
-      href="https://enrise.com"
+      imageUrl="/images/taakjes-logo.png"
+      label="Taakjes.app"
+      bgColor="#EFD3E4"
+      href="https://taakjes.vercel.app"
+      isExternal
     />
   </div>
 );

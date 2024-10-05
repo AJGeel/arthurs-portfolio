@@ -1,11 +1,12 @@
 "use client";
 
-import { MegaphoneIcon } from "@heroicons/react/20/solid";
+import { ChatBubbleLeftIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { youngSerif } from "@/app/layout";
 import { cn } from "@/utils/cn";
+
+import { youngSerif } from "./Typography";
 
 const headerItems = [
   {
@@ -16,10 +17,12 @@ const headerItems = [
     href: "/about",
     label: "About",
   },
-  {
-    href: "/posts",
-    label: "Posts",
-  },
+  /*
+   * {
+   *   href: "/posts",
+   *   label: "Posts",
+   * },
+   */
 ];
 
 const Header = () => {
@@ -54,10 +57,12 @@ const Header = () => {
       </div>
       <Link
         className="group -mx-2 hidden w-32 items-center justify-end gap-2 overflow-hidden rounded-full px-2 py-1.5 duration-150 active:scale-90 active:opacity-80 md:flex"
-        href="/"
+        href="https://linkedin.com/in/ajgeel"
+        target="_blank"
+        rel="_noopener noreferrer"
       >
         <span>Contact</span>
-        <MegaphoneIcon className="-mr-6 h-4 w-4 duration-150 group-hover:mr-0" />
+        <ChatBubbleLeftIcon className="-mr-6 h-4 w-4 duration-150 group-hover:mr-0" />
       </Link>
     </div>
   );

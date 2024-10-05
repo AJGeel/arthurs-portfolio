@@ -11,7 +11,7 @@ import { cn } from "@/utils/cn";
 import { BlogBentoProps, IconBentoProps, ImageBentoProps } from "./types";
 
 const classes = {
-  base: "p-8 rounded-3xl bg-white shadow-sm active:scale-95 active:opacity-80 duration-150 min-h-[256px] flex flex-col",
+  base: "p-8 rounded-3xl bg-white shadow-sm active:scale-95 active:opacity-80 duration-150 min-h-[256px] flex flex-col outline outline-1 outline-black/5 focus:ring-2",
   pill: "flex items-center gap-2 px-3 py-2 rounded-full outline outline-2 outline-black/5 bg-white",
   ringHover: "group-hover:ring ring-blue-500 ring-offset-2 duration-150",
 };
@@ -33,7 +33,7 @@ export const BlogBentoItem = ({
     {...externalProps(isExternal)}
   >
     <H3>{title}</H3>
-    <Paragraph className="mt-3">{description}</Paragraph>
+    <Paragraph className="mb-6 mt-3">{description}</Paragraph>
     <div className="mt-auto flex items-center justify-between">
       <div className={cn(classes.pill, classes.ringHover)}>
         <Paragraph>Read more</Paragraph>
@@ -91,7 +91,7 @@ export const ArthurBentoItem = () => (
     <Paragraph className="mt-3">
       I&apos;m a designer/developer from Amersfoort, working at Enrise.
     </Paragraph>
-    <Paragraph className="mt-3">
+    <Paragraph className="mb-6 mt-3">
       I&apos;m passionate about design, digital products, sci-fi, music (DnB)
       and leading a secret society dedicated to eradicating the use of Comic
       Sans.

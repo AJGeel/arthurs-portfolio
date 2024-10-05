@@ -1,25 +1,9 @@
-import { Young_Serif } from "next/font/google";
-import LocalFont from "next/font/local";
 import { ReactNode } from "react";
 
 import "./globals.css";
 
 import Header from "@/components/Header";
-
-export const youngSerif = Young_Serif({
-  subsets: ["latin"],
-  weight: "400",
-});
-
-export const brockmann = LocalFont({
-  src: [
-    {
-      path: "../../public/fonts/brockmann-medium/brockmann-medium.ttf",
-      weight: "400",
-    },
-  ],
-  variable: "--font-brockmann",
-});
+import { brockmann } from "@/components/Typography";
 
 type Props = {
   children: ReactNode;

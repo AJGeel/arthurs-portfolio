@@ -13,16 +13,19 @@ type MeProps = {
   className?: string;
 };
 
+const MIN_INDEX = 2;
+const MAX_INDEX = 6;
+
 const Me = ({ className }: MeProps) => {
   const [boopStyle, boopTrigger] = useBoop({
     scale: 1.15,
   });
 
   const [isHovered, setIsHovered] = useState(false);
-  const [randomIndex, setRandomIndex] = useState(2);
+  const [randomIndex, setRandomIndex] = useState(MIN_INDEX);
 
   const onMouseEnter = () => {
-    setRandomIndex(randomInRange(2, 6, randomIndex));
+    setRandomIndex(randomInRange(MIN_INDEX, MAX_INDEX, randomIndex));
     setIsHovered(true);
     boopTrigger();
   };

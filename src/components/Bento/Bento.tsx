@@ -2,11 +2,11 @@ import { ArrowTrendingUpIcon, HandRaisedIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
 import Link from "next/link";
 
+import Me from "@/components/Me";
+import { H3, Paragraph } from "@/components/Typography";
 import { cn } from "@/utils/cn";
 
 import { BlogBentoProps, IconBentoProps, ImageBentoProps } from "./types";
-import Me from "../Me";
-import { H3, Paragraph } from "../Typography";
 
 const classes = {
   base: "p-8 rounded-3xl bg-white shadow-sm active:scale-95 active:opacity-80 duration-150 min-h-[256px] flex flex-col",

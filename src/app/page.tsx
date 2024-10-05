@@ -18,13 +18,15 @@ const HomePage = () => (
       imageUrl="/images/taakjes-logo.png"
       label="Taakjes.app"
       bgColor="#EFD3E4"
-      href="/"
+      href="https://taakjes.vercel.app"
+      isExternal
     />
     <IconBentoItem
       imageUrl="/images/uptab-logo.png"
       label="UpTab.app"
       bgColor="#DBE9F5"
-      href="/"
+      href="https://uptab.vercel.app"
+      isExternal
     />
     <ImageBentoItem
       imageUrl="/images/retrofuturism.jpg"

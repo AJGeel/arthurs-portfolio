@@ -1,3 +1,5 @@
+"use client";
+
 import { ArrowTrendingUpIcon, HandRaisedIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,13 +16,22 @@ const classes = {
   ringHover: "group-hover:ring ring-blue-500 ring-offset-2 duration-150",
 };
 
+const externalProps = (isExternal?: boolean) => ({
+  ...(isExternal ? { rel: "noopener noreferrer", target: "_blank" } : {}),
+});
+
 export const BlogBentoItem = ({
   title,
   description,
   date,
   href,
+  isExternal,
 }: Omit<BlogBentoProps, "type">) => (
-  <Link href={href} className={cn(classes.base, "lg:col-span-2 group")}>
+  <Link
+    href={href}
+    className={cn(classes.base, "lg:col-span-2 group")}
+    {...externalProps(isExternal)}
+  >
     <H3>{title}</H3>
     <Paragraph className="mt-3">{description}</Paragraph>
     <div className="mt-auto flex items-center justify-between">
@@ -38,6 +49,7 @@ export const IconBentoItem = ({
   label,
   bgColor,
   href,
+  isExternal,
 }: Omit<IconBentoProps, "type">) => (
   <Link
     href={href}
@@ -45,6 +57,7 @@ export const IconBentoItem = ({
       classes.base,
       "relative flex items-center justify-center group"
     )}
+    {...externalProps(isExternal)}
     style={{ backgroundColor: bgColor }}
   >
     <Image src={imageUrl} width={80} height={80} alt={label} />
@@ -64,11 +77,14 @@ export const IconBentoItem = ({
 );
 
 export const ArthurBentoItem = () => (
-  <div
+  <button
     className={cn(
       classes.base,
-      "row-span-2 grow group cursor-pointer flex flex-col"
+      "text-left row-span-2 grow group cursor-pointer flex flex-col"
     )}
+    onClick={() => {
+      alert("Hello back!");
+    }}
   >
     <Me />
     <Paragraph className="mt-6">Hi there, I&apos;m Arthur!</Paragraph>
@@ -76,8 +92,9 @@ export const ArthurBentoItem = () => (
       I&apos;m a designer/developer from Amersfoort, working at Enrise.
     </Paragraph>
     <Paragraph className="mt-3">
-      I&apos;m passionate about software, design, sci-fi, music (DnB) and
-      re-architecting the global financial infrastructure with friends.
+      I&apos;m passionate about design, digital products, sci-fi, music (DnB)
+      and leading a secret society dedicated to eradicating the use of Comic
+      Sans.
     </Paragraph>
     <div className="mt-auto">
       <div className={cn(classes.pill, classes.ringHover, "inline-flex")}>
@@ -85,7 +102,7 @@ export const ArthurBentoItem = () => (
         <HandRaisedIcon className="h-4 w-4" />
       </div>
     </div>
-  </div>
+  </button>
 );
 
 export const ImageBentoItem = ({
@@ -93,6 +110,7 @@ export const ImageBentoItem = ({
   label,
   href,
   className,
+  isExternal,
 }: Omit<ImageBentoProps, "type">) => (
   <Link
     href={href}
@@ -101,6 +119,7 @@ export const ImageBentoItem = ({
       "relative flex items-center justify-center group overflow-hidden",
       className
     )}
+    {...externalProps(isExternal)}
   >
     <Image
       src={imageUrl}

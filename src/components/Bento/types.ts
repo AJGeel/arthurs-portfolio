@@ -1,23 +1,25 @@
-export type BlogBentoProps = {
+type BaseProps = {
+  href: string;
+  isExternal?: boolean;
+};
+
+export type BlogBentoProps = BaseProps & {
   type: "Blog";
   title: string;
   description: string;
   date: string;
-  href: string;
 };
 
-export type IconBentoProps = {
+export type IconBentoProps = BaseProps & {
   type: "Icon";
   imageUrl: string;
   label: string;
   bgColor: string;
-  href: string;
 };
 
-export type ImageBentoProps = {
+export type ImageBentoProps = BaseProps & {
   type: "Image";
   imageUrl: string;
   label: string;
-  href: string;
   className?: string;
 };

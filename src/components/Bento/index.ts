@@ -1,7 +1,7 @@
 import {
+  ArthurBentoItem,
   BlogBentoItem,
   IconBentoItem,
-  ArthurBentoItem,
   ImageBentoItem,
 } from "./Bento";
 

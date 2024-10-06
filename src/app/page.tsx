@@ -22,7 +22,7 @@ const HomePage = () => (
     />
     <IconBentoItem
       imageUrl="/images/uptab-logo.png"
-      label="UpTab.app"
+      label="UpTab App"
       bgColor="#DBE9F5"
       href="https://uptab.vercel.app"
       isExternal
@@ -46,7 +46,7 @@ const HomePage = () => (
     />
     <IconBentoItem
       imageUrl="/images/taakjes-logo.png"
-      label="Taakjes.app"
+      label="Taakjes App"
       bgColor="#EFD3E4"
       href="https://taakjes.vercel.app"
       isExternal

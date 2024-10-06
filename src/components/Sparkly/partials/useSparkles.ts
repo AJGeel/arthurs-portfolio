@@ -1,7 +1,9 @@
-import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import { useState } from "react";
+
+import { MousePosition } from "@/hooks/useMousePosition";
 import useRandomInterval from "@/hooks/useRandomInterval";
 import { randomInRange, range } from "@/utils";
-import { useState } from "react";
+
 import { DEFAULT_COLOR } from "../Sparkly";
 
 type Sparkle = {
@@ -15,41 +17,65 @@ type Sparkle = {
   };
 };
 
-const generateSparkle = (color: string): Sparkle => ({
-  id: String(randomInRange(10000, 99999)),
-  createdAt: Date.now(),
-  color,
-  size: randomInRange(10, 20),
-  style: {
-    top: randomInRange(0, 100) + "%",
-    left: randomInRange(0, 100) + "%",
-  },
-});
+const generateSparkle = (
+  color: string,
+  mousePosition?: MousePosition
+): Sparkle => {
+  const base = {
+    id: String(randomInRange(10000, 99999)),
+    createdAt: Date.now(),
+    color,
+    size: randomInRange(10, 20),
+  };
 
-const useSparkles = (color = DEFAULT_COLOR) => {
+  const createFixedPosition = (pos: number) =>
+    pos + randomInRange(-15, 15) + "px";
+  const createRelativePosition = () => randomInRange(0, 100) + "%";
+
+  const style = mousePosition
+    ? {
+        top: createFixedPosition(mousePosition.y),
+        left: createFixedPosition(mousePosition.x),
+      }
+    : {
+        top: createRelativePosition(),
+        left: createRelativePosition(),
+      };
+
+  return {
+    ...base,
+    style,
+  };
+};
+
+type UseSparklesProps = {
+  color: string;
+  mousePosition?: MousePosition;
+};
+
+const useSparkles = ({
+  color = DEFAULT_COLOR,
+  mousePosition,
+}: UseSparklesProps) => {
   const [sparkles, setSparkles] = useState<Sparkle[]>(() =>
-    range(3).map(() => generateSparkle(color))
+    range(3).map(() => generateSparkle(color, mousePosition))
   );
-
-  const prefersReducedMotion = usePrefersReducedMotion();
 
   useRandomInterval(
     () => {
-      const sparkle = generateSparkle(color);
-
+      const sparkle = generateSparkle(color, mousePosition);
       const now = Date.now();
 
-      const nextSparkles = sparkles.filter((sp) => {
-        const delta = now - sp.createdAt;
+      const nextSparkles = sparkles.filter(({ createdAt }) => {
+        const delta = now - createdAt;
         return delta < 750;
       });
 
       nextSparkles.push(sparkle);
-
       setSparkles(nextSparkles);
     },
-    prefersReducedMotion ? 0 : 50,
-    prefersReducedMotion ? 0 : 450
+    50,
+    450
   );
 
   return {

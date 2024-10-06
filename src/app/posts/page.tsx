@@ -1,6 +1,8 @@
+import { ReactNode } from "react";
+
+import Loader from "@/components/Loader";
 import { Paragraph } from "@/components/Typography";
 import { cn } from "@/utils";
-import { ReactNode } from "react";
 
 const PlaceholderItem = ({
   className,
@@ -24,12 +26,24 @@ const Placeholder = () => (
     <PlaceholderItem className="col-span-1">
       Arthur used &quot;Placeholder&quot;!
     </PlaceholderItem>
-    <PlaceholderItem className="lg:row-span-2">...</PlaceholderItem>
-    <PlaceholderItem className="col-span-2">...</PlaceholderItem>
-    <PlaceholderItem className="col-span-1">...</PlaceholderItem>
-    <PlaceholderItem className="lg:row-span-2">...</PlaceholderItem>
-    <PlaceholderItem className="col-span-1">...</PlaceholderItem>
-    <PlaceholderItem className="lg:col-span-2">...</PlaceholderItem>
+    <PlaceholderItem className="lg:row-span-2">
+      <Loader className="text-black/50" />
+    </PlaceholderItem>
+    <PlaceholderItem className="col-span-2">
+      <Loader className="text-black/50" />
+    </PlaceholderItem>
+    <PlaceholderItem className="col-span-1">
+      <Loader className="text-black/50" />
+    </PlaceholderItem>
+    <PlaceholderItem className="lg:row-span-2">
+      <Loader className="text-black/50" />
+    </PlaceholderItem>
+    <PlaceholderItem className="col-span-1">
+      <Loader className="text-black/50" />
+    </PlaceholderItem>
+    <PlaceholderItem className="lg:col-span-2">
+      <Loader className="text-black/50" />
+    </PlaceholderItem>
     <PlaceholderItem className="lg:col-span-1">
       It was not very effective.
     </PlaceholderItem>

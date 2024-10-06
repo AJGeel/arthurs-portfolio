@@ -114,7 +114,7 @@ export const ArthurBentoItem = () => (
     <div className="mt-auto">
       <div className={cn(classes.pill, classes.ringHover, "inline-flex")}>
         <Paragraph>Say hi!</Paragraph>
-        <HandRaisedIcon className="h-4 w-4" />
+        <HandRaisedIcon className="size-4" />
       </div>
     </div>
   </button>

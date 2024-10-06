@@ -1,8 +1,9 @@
-import Image from "next/image";
+import React, { ReactNode } from "react";
 
+import IconGrid from "@/components/IconGrid";
+import { designGridItems, devGridItems } from "@/components/IconGrid/config";
 import Me from "@/components/Me";
 import { H1, H3, Paragraph, StyledLink } from "@/components/Typography";
-import Sparkly from "@/components/Sparkly";
 
 const HR = () => (
   <div className="py-6">
@@ -10,117 +11,26 @@ const HR = () => (
   </div>
 );
 
-const GridItem = ({ name, img, bgColor }: GridItem) => (
-  <div className="group relative flex items-center gap-2.5 overflow-hidden rounded-md bg-gradient-to-b from-white/80 to-white/30 p-3 shadow-sm outline outline-1 outline-black/10 duration-500 hover:shadow-md">
-    <div
-      style={{ backgroundColor: bgColor || "#0000001A" }}
-      className="pointer-events-none absolute left-0 top-0 h-full w-1/2 translate-x-[220%] skew-x-[40deg] opacity-0 bg-blend-screen blur-md duration-500 group-hover:translate-x-[-60%] group-hover:opacity-100"
-    />
-    {img && (
-      <Image
-        className="h-6 w-6 shrink-0 rounded-sm opacity-50 saturate-0 duration-500 group-hover:opacity-100 group-hover:saturate-100"
-        width={80}
-        height={80}
-        src={img}
-        alt={name}
-      />
-    )}
-    <Paragraph className="grow truncate">{name}</Paragraph>
-  </div>
+const Section = ({
+  title,
+  paragraph,
+  children,
+}: {
+  title: string;
+  paragraph: string;
+  children: ReactNode;
+}) => (
+  <>
+    <HR />
+    <H3>{title}</H3>
+    <Paragraph className="leading-relaxed">{paragraph}</Paragraph>
+    {children}
+  </>
 );
-
-type GridItem = {
-  name: string;
-  img?: string;
-  bgColor?: string;
-};
-
-const devGrid: GridItem[] = [
-  {
-    name: "Typescript",
-    img: "/images/icons/typescript.png",
-    bgColor: "#007ACC33",
-  },
-  {
-    name: "React",
-    img: "/images/icons/react.png",
-    bgColor: "#00D8FF33",
-  },
-  {
-    name: "React Native",
-    img: "/images/icons/react-native.png",
-  },
-  {
-    name: "Tailwind",
-    img: "/images/icons/tailwind.png",
-    bgColor: "#44A8B333",
-  },
-  {
-    name: "NextJS",
-    img: "/images/icons/nextjs.png",
-  },
-  {
-    name: "Node",
-    img: "/images/icons/nodejs.png",
-    bgColor: "#8CC84B33",
-  },
-  {
-    name: "Testing",
-    img: "/images/icons/testing.png",
-    bgColor: "#15C21333",
-  },
-  {
-    name: "CI/CD",
-    img: "/images/icons/cicd.png",
-    bgColor: "#007ACC33",
-  },
-];
-
-const designGrid: GridItem[] = [
-  {
-    name: "UX Design",
-    img: "/images/icons/ux-design.png",
-  },
-  {
-    name: "UX Research",
-    img: "/images/icons/ux-research.png",
-  },
-  {
-    name: "UI Design",
-    img: "/images/icons/ui-design.png",
-  },
-  {
-    name: "Figma",
-    img: "/images/icons/figma.png",
-    bgColor: "#A259FF33",
-  },
-  {
-    name: "Illustrator",
-    img: "/images/icons/illustrator.png",
-    bgColor: "#FF9A0033",
-  },
-  {
-    name: "Photoshop",
-    img: "/images/icons/photoshop.png",
-    bgColor: "#31A8FF33",
-  },
-  {
-    name: "After Effects",
-    img: "/images/icons/after-effects.png",
-    bgColor: "#9999FF33",
-  },
-  {
-    name: "InDesign",
-    img: "/images/icons/indesign.png",
-    bgColor: "#FF336633",
-  },
-];
 
 const AboutPage = () => (
   <div className="mx-auto w-full max-w-2xl items-start gap-6 sm:flex">
-    <div className="smb:mb-0 top-10 mb-10 h-20 w-20 shrink-0 sm:sticky">
-      <Me className="shadow-lg outline outline-1 outline-black/10" />
-    </div>
+    <Me className="top-10 mb-10 size-20 shrink-0 shadow-lg outline outline-1 outline-black/10 sm:sticky sm:mb-0" />
     <div className="space-y-4">
       <H1>About me</H1>
       <Paragraph className="leading-relaxed">
@@ -136,35 +46,20 @@ const AboutPage = () => (
         , which grants me the authority to call myself an ingenieur (ir.).
         Sweet!
       </Paragraph>
-      <Sparkly>
-        <p>Hello world. This should sparkle.</p>
-      </Sparkly>
-      {/* <Paragraph className="leading-relaxed">
-        I have a multidisciplinary approach to creating digital products:
-        considering Human-Centered Design,
-      </Paragraph> */}
-      <HR />
-      <H3>Development 🔧</H3>
-      <Paragraph className="leading-relaxed">
-        Here are a few key technologies and concepts I like working with when
-        developing digital products and other stuff.
-      </Paragraph>
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-        {devGrid.map((item) => (
-          <GridItem key={item.name} {...item} />
-        ))}
-      </div>
-      <HR />
-      <H3>Design 🧙</H3>
-      <Paragraph className="leading-relaxed">
-        Similarly, here are areas of design that I like and tools I enjoy
-        working with.
-      </Paragraph>
-      <div className="grid grid-cols-2 gap-2 pb-12 sm:grid-cols-3">
-        {designGrid.map((item) => (
-          <GridItem key={item.name} {...item} />
-        ))}
-      </div>
+      <Section
+        title="Development 🔧"
+        paragraph="Here are a few key technologies and concepts I like working with when
+        developing digital products and other stuff."
+      >
+        <IconGrid items={devGridItems} />
+      </Section>
+      <Section
+        title="Design 🧙"
+        paragraph="Similarly, here are areas of design that I like and tools I enjoy
+        working with."
+      >
+        <IconGrid className="pb-12" items={designGridItems} />
+      </Section>
     </div>
   </div>
 );

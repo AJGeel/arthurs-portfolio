@@ -18,6 +18,22 @@ const config: Config = {
         500: "#007EF2",
       },
     },
+    extend: {
+      keyframes: {
+        "come-in-out": {
+          "0%, 100%": { transform: "scale(0)" },
+          "50%": { transform: "scale(1)" },
+        },
+        "spin-half": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(180deg)" },
+        },
+      },
+      animation: {
+        "come-in-out": "come-in-out 700ms forwards",
+        "spin-half": "spin-half 1000ms linear",
+      },
+    },
   },
   plugins: [],
 };

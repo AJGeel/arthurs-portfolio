@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import Me from "@/components/Me";
 import { H1, H3, Paragraph, StyledLink } from "@/components/Typography";
+import Sparkly from "@/components/Sparkly";
 
 const HR = () => (
   <div className="py-6">
@@ -135,6 +136,9 @@ const AboutPage = () => (
         , which grants me the authority to call myself an ingenieur (ir.).
         Sweet!
       </Paragraph>
+      <Sparkly>
+        <p>Hello world. This should sparkle.</p>
+      </Sparkly>
       {/* <Paragraph className="leading-relaxed">
         I have a multidisciplinary approach to creating digital products:
         considering Human-Centered Design,

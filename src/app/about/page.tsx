@@ -153,8 +153,8 @@ const AboutPage = () => (
       <HR />
       <H3>Design 🧙</H3>
       <Paragraph className="leading-relaxed">
-        Similarly, here are areas of design that I like and tools I am
-        proficient in.
+        Similarly, here are areas of design that I like and tools I enjoy
+        working with.
       </Paragraph>
       <div className="grid grid-cols-2 gap-2 pb-12 sm:grid-cols-3">
         {designGrid.map((item) => (

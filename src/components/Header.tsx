@@ -33,8 +33,8 @@ const HeaderItem = ({ label, href, isActive }: HeaderItem) => (
   <Link
     key={label}
     className={cn(
-      "px-4 py-2 rounded-full group",
-      isActive && "bg-white shadow duration-150"
+      "px-4 py-2 rounded-full group outline-black/5",
+      isActive && "bg-white shadow duration-150 outline outline-1"
     )}
     href={href}
   >

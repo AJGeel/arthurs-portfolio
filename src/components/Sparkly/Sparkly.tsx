@@ -40,7 +40,11 @@ const Sparkly = ({
       onMouseLeave={() => {
         setIsHovering(true);
       }}
-      className={cn("relative inline-block", className)}
+      className={cn(
+        "relative inline-block",
+        !isAlwaysVisible && "cursor-grabbing",
+        className
+      )}
     >
       {sparkles.map((sparkle) => (
         <div

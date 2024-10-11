@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { ReactNode } from "react";
 
-import "./globals.css";
+import "../globals.css";
 
 import Header from "@/components/Header";
 import { brockmann } from "@/components/Typography";

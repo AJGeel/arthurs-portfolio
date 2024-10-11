@@ -1,4 +1,8 @@
-import { StarIcon, TrophyIcon } from "@heroicons/react/24/outline";
+import {
+  QuestionMarkCircleIcon,
+  StarIcon,
+  TrophyIcon,
+} from "@heroicons/react/24/outline";
 import React, { useEffect, useRef, useState } from "react";
 import { useDvdScreensaver } from "react-dvd-screensaver";
 
@@ -10,14 +14,16 @@ import { Paragraph } from "../Typography";
 const SCORE_BASE_RATE = 50;
 const SCORE_MULTIPLIER = 0.25;
 
-const ScorePanel = ({
+const Panel = ({
   text,
   icon,
   label,
+  className,
 }: {
   text: string;
-  icon: "star" | "trophy";
+  icon?: "star" | "trophy" | "?";
   label: string;
+  className?: string;
 }) => {
   const [isHovering, setIsHovering] = useState(false);
 
@@ -25,21 +31,22 @@ const ScorePanel = ({
     <div
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
-      className="group relative flex items-center gap-2 rounded-md bg-white/60 px-3 py-2.5 shadow-md outline outline-1 outline-black/10"
-    >
-      {icon === "star" ? (
-        <StarIcon className="size-4 shrink-0" />
-      ) : (
-        <TrophyIcon className="size-4 shrink-0" />
+      className={cn(
+        "relative flex items-center gap-2 rounded-md bg-white/60 px-3 py-2.5 shadow-md outline outline-1 outline-black/10",
+        className
       )}
+    >
+      {icon === "star" && <StarIcon className="size-4 shrink-0" />}
+      {icon === "trophy" && <TrophyIcon className="size-4 shrink-0" />}
+      {icon === "?" && <QuestionMarkCircleIcon className="size-4 shrink-0" />}
       <Paragraph>{text}</Paragraph>
       {isHovering && (
         <div
           className={cn(
-            "absolute -top-8 left-0 flex w-full flex-col items-center"
+            "absolute bottom-12 left-0 flex w-full flex-col items-center"
           )}
         >
-          <div className="text-nowrap rounded-md bg-white/60 px-2 py-1 text-center text-xs shadow-lg outline outline-1 outline-black/10">
+          <div className=" rounded-md bg-white/60 px-2 py-1.5 text-center text-xs shadow-lg outline outline-1 outline-black/10">
             {label}
           </div>
         </div>
@@ -94,18 +101,24 @@ const DvdScreensaver = () => {
     <div ref={containerRef} className="h-screen w-screen ">
       <div className="absolute inset-0 flex size-full flex-col items-center justify-end">
         <div className="flex w-full items-center gap-4 p-4">
-          <ScorePanel
+          <Panel
             text={`${score.toLocaleString()} points`}
             icon="star"
             label="Current score"
           />
           {!!highScore && (
-            <ScorePanel
+            <Panel
               text={`${highScore.toLocaleString()} points`}
               icon="trophy"
               label="Highscore"
             />
           )}
+          <Panel
+            text="What's this?"
+            icon="?"
+            label="A simple game. Hover over me to gain points. Beat all your friends."
+            className="ml-auto"
+          />
         </div>
       </div>
       <span

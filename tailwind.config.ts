@@ -12,10 +12,8 @@ const config: Config = {
       black: "#0D1116",
       yellow: {
         200: "#FCF3DE",
+        500: "#FFC700",
         700: "#EFE4CA",
-      },
-      blue: {
-        500: "#007EF2",
       },
     },
     extend: {

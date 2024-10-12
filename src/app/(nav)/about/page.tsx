@@ -23,7 +23,7 @@ const Section = ({
   <>
     <HR />
     <H3>{title}</H3>
-    <Paragraph className="leading-relaxed">{paragraph}</Paragraph>
+    <Paragraph>{paragraph}</Paragraph>
     {children}
   </>
 );
@@ -33,12 +33,12 @@ const AboutPage = () => (
     <Me className="top-10 mb-10 size-20 shrink-0 shadow-lg outline outline-1 outline-black/10 sm:sticky sm:mb-0" />
     <div className="space-y-4">
       <H1>About me</H1>
-      <Paragraph className="leading-relaxed">
+      <Paragraph>
         Hi there, my name is Arthur. I am a designer/developer based in
         Amersfoort, currently working at{" "}
         <StyledLink href="https://enrise.com">Enrise</StyledLink>.
       </Paragraph>
-      <Paragraph className="leading-relaxed">
+      <Paragraph>
         I hold a MSc. in Industrial Design from the{" "}
         <StyledLink href="https://www.tue.nl/en/education/graduate-school/master-industrial-design">
           Eindhoven University of Technology

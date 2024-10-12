@@ -18,7 +18,7 @@ import {
 const classes = {
   base: "p-8 rounded-3xl bg-white shadow-sm active:scale-95 active:opacity-80 duration-150 min-h-[256px] flex flex-col border border-black/10",
   pill: "flex items-center gap-2 px-3 py-2 rounded-full outline outline-2 outline-black/5 bg-white",
-  ringHover: "group-hover:ring ring-blue-500 ring-offset-2 duration-150",
+  ringHover: "group-hover:ring ring-black/20 ring-offset-4 duration-150",
 };
 
 const ItemIcon = ({ isExternal, className }: ItemIconProps) => {

@@ -116,7 +116,7 @@ const DvdScreensaver = () => {
           <Panel
             text="What's this?"
             icon="?"
-            label="A simple game. Hover over me to gain points. Beat all your friends."
+            label="A simple game. Hover over me to rack up points. Good luck."
             className="ml-auto"
           />
         </div>

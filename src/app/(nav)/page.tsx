@@ -19,6 +19,7 @@ const HomePage = () => (
       label="Enrise.com"
       bgColor="#EFE4CA"
       href="https://enrise.com"
+      isExternal
     />
     <IconBentoItem
       imageUrl="/images/uptab-logo.png"
@@ -34,9 +35,10 @@ const HomePage = () => (
       className="row-span-2"
     />
     <ImageBentoItem
-      imageUrl="/images/compooter.jpg"
-      label="placeholder"
-      href="/"
+      imageUrl="/images/brouwerij-geel.jpg"
+      label="Brouwerij Geel"
+      href="https://brouwerij-geel-recipes.vercel.app"
+      isExternal
     />
     <BlogBentoItem
       title="Brouwerij Geel: Recipes"

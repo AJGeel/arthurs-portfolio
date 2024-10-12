@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  ArrowTrendingUpIcon,
-  HandRaisedIcon,
-  LinkIcon,
-} from "@heroicons/react/20/solid";
+import { ArrowTrendingUpIcon, LinkIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -92,14 +88,12 @@ export const IconBentoItem = ({
 );
 
 export const ArthurBentoItem = () => (
-  <button
+  <Link
+    href="/about"
     className={cn(
       classes.base,
       "text-left row-span-2 grow group cursor-pointer flex flex-col"
     )}
-    onClick={() => {
-      alert("Hello back!");
-    }}
   >
     <Me />
     <Paragraph className="mt-6">Hi there, I&apos;m Arthur!</Paragraph>
@@ -113,11 +107,11 @@ export const ArthurBentoItem = () => (
     </Paragraph>
     <div className="mt-auto">
       <div className={cn(classes.pill, classes.ringHover, "inline-flex")}>
-        <Paragraph>Say hi!</Paragraph>
-        <HandRaisedIcon className="size-4" />
+        <Paragraph>More about me</Paragraph>
+        <ArrowTrendingUpIcon className="size-4" />
       </div>
     </div>
-  </button>
+  </Link>
 );
 
 export const ImageBentoItem = ({

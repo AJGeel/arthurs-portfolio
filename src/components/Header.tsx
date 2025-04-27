@@ -1,6 +1,6 @@
 "use client";
 
-import { ChatBubbleLeftIcon, LinkIcon } from "@heroicons/react/20/solid";
+import { LinkIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 

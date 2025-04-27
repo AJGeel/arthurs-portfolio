@@ -1,5 +1,6 @@
-import { randomInRange } from "@/utils";
 import { useCallback, useEffect, useRef } from "react";
+
+import { randomInRange } from "@/utils";
 
 const useRandomInterval = (
   callback: () => void,
@@ -14,7 +15,7 @@ const useRandomInterval = (
   }, [callback]);
 
   useEffect(() => {
-    let isEnabled =
+    const isEnabled =
       typeof minDelay === "number" && typeof maxDelay === "number";
 
     if (isEnabled) {
@@ -33,7 +34,7 @@ const useRandomInterval = (
     return () => window.clearTimeout(timeoutId.current);
   }, [minDelay, maxDelay]);
 
-  const cancel = useCallback(function () {
+  const cancel = useCallback(() => {
     window.clearTimeout(timeoutId.current);
   }, []);
 
